@@ -42,13 +42,13 @@ public class Book
         }   
     }
     
-     @Override
+    @Override
     public String toString()
     {
         System.out.println("ID: "+this.getID()+"");
-        System.out.println("ID: "+this.getName()+"");
-        System.out.println("ID: "+this.getYear()+"");
-        System.out.println("ID: "+this.getGenre()+"");
+        System.out.println("Name: "+this.getName()+"");
+        System.out.println("Year: "+this.getYear()+"");
+        System.out.println("Genre: "+this.getGenre()+"");
         return "\n";
     }
     
