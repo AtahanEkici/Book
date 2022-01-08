@@ -13,6 +13,7 @@ public class Book
 
     protected Account owned_by = null;
     
+    @SuppressWarnings("LeakingThisInConstructor")
     public Book(String name, String year, String genre, String writer_name)
     {
         this.ID_Counter++;
@@ -23,6 +24,7 @@ public class Book
         this.Writer = writer_name;
         //this.PrintID();
         Books.add(this);
+        
     }
     
     public int getID()

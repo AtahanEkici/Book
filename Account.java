@@ -11,6 +11,7 @@ public class Account
     
     public static ArrayList<Account> Accounts = new ArrayList<>();
     
+    @SuppressWarnings("LeakingThisInConstructor")
     public Account()
     {
         this.ID_Counter++;
@@ -20,6 +21,7 @@ public class Account
         Accounts.add(this);
     }
     
+    @SuppressWarnings("LeakingThisInConstructor")
     public Account(String username, String pass)
     {
         this.ID_Counter++;

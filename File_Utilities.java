@@ -14,8 +14,8 @@ public class File_Utilities
     
     public static final String Desktop = System.getProperty("user.home")+"/Desktop";
     
-    public static String Accounts_Path = Desktop + "Accounts.txt";
-    public static String Books_Path = Desktop + "Books.txt";
+    public static String Accounts_Path = Desktop + "/Accounts.txt";
+    public static String Books_Path = Desktop + "/Books.txt";
     
     public static void ReadBook(File file)
     {
@@ -23,7 +23,7 @@ public class File_Utilities
         String line;
         String[] catcher = null;
         
-        System.out.println("Name Of The File: "+ANSI_BLUE+""+file.getName()+""+ANSI_RESET+"\n");
+        //System.out.println("Name Of The File: "+ANSI_BLUE+""+file.getName()+""+ANSI_RESET+"\n");
         
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
                 {
@@ -60,7 +60,7 @@ public class File_Utilities
     {
         if(list.size() <= 0)
         {
-            System.out.println("No Accounts registered");
+            System.out.println("No Records Found");
         }
         else
         {
@@ -76,7 +76,7 @@ public class File_Utilities
         int counter = 0;
         String line;
         String[] catcher = null;
-        System.out.println("Name Of The File: "+ANSI_BLUE+""+file.getName()+""+ANSI_RESET+"\n");
+        //System.out.println("Name Of The File: "+ANSI_BLUE+""+file.getName()+""+ANSI_RESET+"\n");
         
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
                 {
@@ -136,15 +136,33 @@ public class File_Utilities
     public static void getAccountsLocation()
     {
         File f = new File(File_Utilities.Accounts_Path);
+        //System.out.println(f.getAbsoluteFile());
         
-        if(f.exists() && !f.isDirectory()) 
+        if(f.exists()) 
         { 
-            System.out.println("Accounts File was at expected place");
+            ReadAccount(f);
+            System.out.println("Accounts File was at expected place: "+ANSI_BLUE+""+f.getAbsolutePath()+""+ANSI_RESET+"");
         }
         else
         {
             System.out.println("Accounts File could not be found. User adjustment required");
-            File_Utilities.GetFile(false);
+            GetFile(false);
+        }
+    }
+    public static void getBooksLocation()
+    {
+        File f = new File(Books_Path);
+        //System.out.println(f.getAbsoluteFile());
+        
+        if(f.exists()) 
+        { 
+            ReadBook(f);
+            System.out.println("Books File was at expected place: "+ANSI_BLUE+""+f.getAbsolutePath()+""+ANSI_RESET+"");
+        }
+        else
+        {
+            System.out.println("Books File could not be found. User adjustment required");
+            GetFile(true);
         }
     }
     

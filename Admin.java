@@ -14,11 +14,6 @@ public class Admin extends Account
         super.type = true;
     }
     
-    public void AddAccount(Account A)
-    {
-        
-    }
-    
     public static Admin Setup_Admin()
     {
         String User_name = null;

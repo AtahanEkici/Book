@@ -15,7 +15,7 @@ public class Menu
         {
             if(Logged_Account == null)
             {
-                System.out.println("Enter 1 for Login Enter Anything else to exit");
+                System.out.println("\n Please Enter 1 for Login Enter Anything else to exit");
                 Scanner scanned = new Scanner(System.in);
                 
                 if("1".equals(scanned.next().trim()))
@@ -29,17 +29,20 @@ public class Menu
             }
             
             System.out.print("Please specify a function: ");
-            System.out.println("Enter 1 for ");
+            System.out.println("Enter 1 to see your account details");
             System.out.println("Enter 2 for getting Printing All Accounts");
             System.out.println("Enter 3 for getting Printing All Books");
+            System.out.println("Enter 4 for Logging Out");
+            System.out.print("Your choice: ");
             
             scanner = new Scanner(System.in);
             input = scanner.next();
             
-            switch(input)
+            switch(input.trim())
             {
                 case "1": 
-                    //Create Student //
+                    System.out.print("\n--- Account Details ---");
+                    System.out.println(Logged_Account.toString());
                     break;
                    
                 case "2":
@@ -76,9 +79,9 @@ public class Menu
             if(Logged_Account == null)
             {
                 System.out.println("Enter 1 for Login Enter Anything else to exit");
-                Scanner scanned = new Scanner(System.in);
+                scanner = new Scanner(System.in);
                 
-                if("1".equals(scanned.next().trim()))
+                if("1".equals(scanner.next().trim()))
                 {
                     Login();
                 }
@@ -89,17 +92,20 @@ public class Menu
             }
             
             System.out.print("Please specify a function: ");
-            System.out.println("Enter 1 for ");
+            System.out.println("Enter 1 to see your account details");
             System.out.println("Enter 2 for getting Printing All Accounts");
             System.out.println("Enter 3 for getting Printing All Books");
+            System.out.println("Enter 4 for Logging Out");
+            System.out.println("Entering 'end'(without the ' character) will exit the program");
             
             scanner = new Scanner(System.in);
             input = scanner.next();
             
-            switch(input)
+            switch(input.trim())
             {
                 case "1": 
-                    //Create Student //
+                   System.out.print("\n--- Account Details ---");
+                    System.out.println(Logged_Account.toString());
                     break;
                    
                 case "2":
@@ -144,15 +150,26 @@ public class Menu
         String password = null;
         
         File_Utilities.getAccountsLocation();
+        File_Utilities.getBooksLocation();
         
-        System.out.println("Please Login Your Account");
+        System.out.println("Please Login to Your Account");
         scanner = new Scanner(System.in);
         
         System.out.print("Your Username: ");
         username = scanner.next();
         
+        if(username.equals(EOF))
+        {
+            System.exit(0);
+        }
+        
         System.out.print("Your Password: ");
         password = scanner.next();
+        
+        if(password.equals(EOF))
+        {
+            System.exit(0);
+        }
         
         Logged_Account = Account.FindAccount(username, password);
         
@@ -164,10 +181,12 @@ public class Menu
         {
             if(Logged_Account.type == true) // Admin //
             {
+                System.out.println("Entered Admin type account");
                 Admin_Panel();
             }
             else // Student //
             {
+                System.out.println("Entered Student type account");
                 Student_Panel();
             }
         }
