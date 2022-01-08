@@ -1,0 +1,3 @@
+Attr1,Attr2,Attr3,Attr4
+Değer1,Değer2,10,Deneme1
+Değer3,Değer4,11,Deneme2

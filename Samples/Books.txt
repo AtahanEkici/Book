@@ -1,0 +1,10 @@
+Name,Year,Genre,Writer_name
+WarandPeace,1869,Novel,LeoTolstoy
+LesMisérables,1862,Novel,VictorHugo
+CrimeandPunishment,1866,Novel,FyodorDostoyevski
+ABriefHistoryofTime,1988,Cosmology,StephenHawking
+LeibhaftigeModerne,2020,Sociology,DeLauri
+DivorceinEurope,2020,Sociology,MortelmansDimitri
+TheArtofStayingNeutral,2006,History,AbbenhuisMaartje
+TwoStudiesonMingHistory,2020,History,HuckerCharlesO
+Bravenewworld,2012,History,BeersLaura-ThomasGeraint

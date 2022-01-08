@@ -1,27 +1,45 @@
+import java.util.ArrayList;
+
 public class Account
 {
     private int ID; // Account ID //
-    private String Email; // Account Email //
     private String password; // Account Password //
+    private String Username;
     
     protected static int ID_Counter = 0; // static counter to simulate auto increment //
     protected boolean type; // Account type (Student or Admin)
+    
+    public static ArrayList<Account> Accounts = new ArrayList<>();
     
     public Account()
     {
         this.ID_Counter++;
         this.ID = ID_Counter;
-        this.Email = "unknown@mail.com";
         this.password = "unknown";
+        //PrintID();
+        Accounts.add(this);
     }
     
-    public Account(String email, String pass)
+    public Account(String username, String pass)
     {
         this.ID_Counter++;
         this.ID = ID_Counter;
-        this.Email = email;
+        this.Username = username;
         this.password = pass;  
+        //PrintID();
+        Accounts.add(this);
     }
+    
+    // Getter and Setter for Account Password //
+    public String getUsername()
+    {
+        return this.Username;
+    }
+    public void setUsername(String uname)
+    {
+        this.Username = uname;
+    }
+    
     // Getter and Setter for Account ID //
     public int getID()
     {
@@ -29,7 +47,7 @@ public class Account
     }
     public void setID(int id)
     {
-        if(ID_Counter > id)
+        if(id > ID_Counter)
         {
             System.out.println("Duplicate ID");
             return;
@@ -39,23 +57,29 @@ public class Account
             this.ID = id;
         }   
     }
-    // Getter and Setter for Account's Email //
-    public String getEmail()
+    
+    @Override
+    public String toString()
     {
-        return this.Email;
-    }
-    public void setEmail(String mail)
-    {
-        if(!mail.contains("@"))
+        System.out.println("ID: "+this.getID()+"");
+        System.out.println("Password: "+this.getPassword()+"");
+        
+        if(type == false)
         {
-            System.out.println("Error unsopported mail type");
-            return;
+            System.out.println("Account Type: Student");
         }
         else
         {
-            this.Email = mail;
+            System.out.println("Account Type: Admin");
         }
+        return "\n";
     }
+    
+    protected void PrintID()
+    {
+        System.out.println("\n"+ "Your ID is: "+this.ID+" " +"\n");
+    }
+
     // Getter and Setter for Account Password //
     public String getPassword()
     {

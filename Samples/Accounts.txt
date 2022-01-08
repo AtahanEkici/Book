@@ -1,0 +1,8 @@
+Username,Password,Type
+Ege,1234,false
+Özgür,2345,false
+Tezcan,3456,false
+Mehmet,4567,true
+Oğuz,5678,false
+Mert,6789,false
+Anıl,7890,false

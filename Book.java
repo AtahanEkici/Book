@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Book 
 {
     private int ID;
@@ -7,9 +9,11 @@ public class Book
     private String Writer;
     
     protected static int ID_Counter;
-    protected Account owned = null;
+    public static ArrayList<Book> Books = new ArrayList<>();
+
+    protected Account owned_by = null;
     
-    public Book(int id, String name, String year, String genre, String writer_name)
+    public Book(String name, String year, String genre, String writer_name)
     {
         this.ID_Counter++;
         this.ID = ID_Counter;
@@ -17,6 +21,8 @@ public class Book
         this.year = year;
         this.Genre = genre;
         this.Writer = writer_name;
+        //this.PrintID();
+        Books.add(this);
     }
     
     public int getID()
@@ -34,6 +40,21 @@ public class Book
         {
             this.ID = id;
         }   
+    }
+    
+     @Override
+    public String toString()
+    {
+        System.out.println("ID: "+this.getID()+"");
+        System.out.println("ID: "+this.getName()+"");
+        System.out.println("ID: "+this.getYear()+"");
+        System.out.println("ID: "+this.getGenre()+"");
+        return "\n";
+    }
+    
+    protected void PrintID()
+    {
+        System.out.println("\n"+ "Your ID is: "+this.ID+" " +"\n");
     }
     
     public String getName()
@@ -72,4 +93,22 @@ public class Book
         this.Writer = writer;
     }
     
+    public void SetOwner(Account act,boolean status)
+    {
+        if(owned_by == null) // does not have an owner //
+        {
+            owned_by = act;
+        }
+        else if(owned_by != null && owned_by == act)
+        {
+            if(status == true) // owner returns the book //
+            {
+                owned_by = null;
+            }
+        }
+        else
+        {
+            System.out.println("The book is not available to public");
+        }
+    }
 }
