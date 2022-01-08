@@ -58,6 +58,23 @@ public class Account
         }   
     }
     
+    public static Account FindAccount(String user_name, String pass_word)
+    {
+        Account act = null;
+                
+        for(int i=0;i<Accounts.size();i++)
+        {
+            Account temp = Accounts.get(i);
+            
+            if(temp.getUsername().equals(user_name) && temp.getPassword().equals(pass_word))
+            {
+                return temp;
+            }
+        }
+        System.out.println("Could not found account by the given credentials");
+        return act;
+    }
+    
     @Override
     public String toString()
     {

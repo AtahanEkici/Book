@@ -12,6 +12,11 @@ public class File_Utilities
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     
+    public static final String Desktop = System.getProperty("user.home")+"/Desktop";
+    
+    public static String Accounts_Path = Desktop + "Accounts.txt";
+    public static String Books_Path = Desktop + "Books.txt";
+    
     public static void ReadBook(File file)
     {
         int counter = 0;
@@ -73,7 +78,7 @@ public class File_Utilities
         String[] catcher = null;
         System.out.println("Name Of The File: "+ANSI_BLUE+""+file.getName()+""+ANSI_RESET+"\n");
         
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
                 {
                     while ((line = reader.readLine()) != null)
                     {
@@ -104,10 +109,20 @@ public class File_Utilities
                         counter++;
                     }
                 }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+    }
+    
+    public static void WriteAccount()
+    {
+        
+    }
+    
+    public static void WriteBook()
+    {
+        
     }
     
     public static void PrintArray(Object[] array)
@@ -118,9 +133,24 @@ public class File_Utilities
         }
     }
     
-    public static File GetFile(boolean Switch)
+    public static void getAccountsLocation()
     {
-    JFileChooser jfc = new JFileChooser(System.getProperty("user.home") +"/Desktop");
+        File f = new File(File_Utilities.Accounts_Path);
+        
+        if(f.exists() && !f.isDirectory()) 
+        { 
+            System.out.println("Accounts File was at expected place");
+        }
+        else
+        {
+            System.out.println("Accounts File could not be found. User adjustment required");
+            File_Utilities.GetFile(false);
+        }
+    }
+    
+    public static File GetFile(boolean Switch) // false for account true for book //
+    {
+    JFileChooser jfc = new JFileChooser(Desktop);
     jfc.requestFocusInWindow();
     jfc.setMultiSelectionEnabled(false);
     jfc.setFileFilter(new FileNameExtensionFilter("Text Files","txt"));
@@ -133,10 +163,14 @@ public class File_Utilities
             if(Switch == false)
             {
                 ReadAccount(file);
+                Accounts_Path = file.getAbsolutePath();
+                System.out.println(Accounts_Path);
             }
             else
             {
                 ReadBook(file);
+                Books_Path = file.getAbsolutePath();
+                System.out.println(Books_Path);
             }
             return file;
         }
