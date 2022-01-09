@@ -25,6 +25,7 @@ public class Admin extends Account
             
             if(User_name.length() <= 0)
             {
+                System.out.println("User name Lenght can not be lower than 0");
                 User_name = null;
             }
         } 
@@ -35,6 +36,7 @@ public class Admin extends Account
             
             if(Password.length() < 4)
             {
+                System.out.println("Password Lenght can not be lower than 4");
                 Password = null;
             }
         }

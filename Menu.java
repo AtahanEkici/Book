@@ -63,7 +63,7 @@ public class Menu
                         File_Utilities.PrintArrayList(Book.Books);
                         break;
                     case "4":
-                        
+                        Book.Setup_Book();
                         break;
                         
                     case "5":

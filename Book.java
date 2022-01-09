@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Book 
 {
@@ -24,6 +25,56 @@ public class Book
         this.Writer = writer_name;
         //this.PrintID();
         Books.add(this);   
+    }
+    
+    public static Book Setup_Book()
+    {
+        String Name=null, Year=null, Genre=null, Writer_name = null;
+        
+        while(Name == null)
+        {
+            Name = JOptionPane.showInputDialog("Please Enter the Name of the Book");
+            
+            if(Name.length() <= 0)
+            {
+                System.out.println("Lenght can not be lower than 0");
+                Name = null;
+            }
+        }
+        
+        while(Year == null)
+        {
+            Year = JOptionPane.showInputDialog("Please Enter the Year of the Book");
+            
+            if(Year.length() <= 0)
+            {
+                System.out.println("Lenght can not be lower than 0");
+                Year = null;
+            }
+        }
+        
+        while(Genre == null)
+        {
+            Genre = JOptionPane.showInputDialog("Please Enter the Genre of the Book");
+            
+            if(Genre.length() <= 0)
+            {
+                System.out.println("Lenght can not be lower than 0");
+                Genre = null;
+            }
+        }
+        
+        while(Writer_name == null)
+        {
+            Writer_name = JOptionPane.showInputDialog("Please Enter the Name of the Writer");
+            
+            if(Writer_name.length() <= 0)
+            {
+                System.out.println("Lenght can not be lower than 0");
+                Writer_name = null;
+            }
+        }
+        return new Book(Name,Year,Genre,Writer_name);
     }
     
     public int getID()
