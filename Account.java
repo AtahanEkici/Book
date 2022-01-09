@@ -47,6 +47,14 @@ public class Account
         }
     }
     
+@Override
+public boolean equals(Object o) 
+{
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    else return false;
+}
+    
     // Getter and Setter for Account Password //
     public String getUsername()
     {
@@ -79,7 +87,7 @@ public class Account
     {
         for(int i=0;i<Accounts.size();i++)
         {
-          if(act.ID == Accounts.get(i).ID && act.Username.equals(Accounts.get(i).Username) && act.type == Accounts.get(i).type)
+          if(act.equals(Accounts.get(i)))
             {
                     System.out.println("Remove Log: "+act.toString()+" -> "+Accounts.get(i).toString()+"");
                     Accounts.remove(i);
@@ -101,7 +109,7 @@ public class Account
                 }
                 else
                 {
-                    if(temp_account.ID == Accounts.get(j).ID && temp_account.Username.equals(Accounts.get(j).Username) && temp_account.type == Accounts.get(j).type)
+                    if(temp_account.equals( Accounts.get(j)))
                     {
                         System.out.println("Remove Log: "+temp_account.toString()+" -> "+Accounts.get(j).toString()+"");
                         Accounts.remove(j);

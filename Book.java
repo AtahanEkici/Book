@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.JOptionPane;
 
 public class Book 
@@ -25,6 +26,24 @@ public class Book
         this.Writer = writer_name;
         //this.PrintID();
         Books.add(this);   
+    }
+    
+@Override
+public boolean equals(Object o) 
+{
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    return false;
+}
+    
+    public static void BarrowBook()
+    {
+        
+    }
+    
+    public static void ReturnBook()
+    {
+        
     }
     
     public static Book Setup_Book()
@@ -98,7 +117,7 @@ public class Book
     {
         for(int i=0;i<Books.size();i++)
         {
-            if(book.name.equals(Books.get(i).name) && book.year.equals(Books.get(i).year) && book.Writer.equals(Books.get(i).Writer) && book.Genre.equals(Books.get(i).Genre))
+            if(book.equals(Books.get(i)))
             {
                 System.out.println("Remove Log: "+book.toString()+" -> "+Books.get(i).toString()+"");
                 Books.remove(i);

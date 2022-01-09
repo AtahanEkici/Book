@@ -122,9 +122,10 @@ public class Menu
                 
                 System.out.println("Please specify a function: ");
                 System.out.println("Enter 1 to see your account details");
-                System.out.println("Enter 2 for getting Printing All Accounts");
                 System.out.println("Enter 3 for getting Printing All Books");
-                System.out.println("Enter 4 for Logging Out");
+                System.out.println("Enter 4 to Barrow a book");
+                System.out.println("Enter 5 to Return a book");
+                System.out.println("Enter 6 for Logging Out");
                 
                 System.out.println("Entering 'end'(without the ' character) will exit the program");
                 
@@ -149,6 +150,14 @@ public class Menu
                         break;
                         
                     case "4":
+                        Book.BarrowBook();
+                        break;
+                    
+                    case "5":
+                        Book.ReturnBook();
+                        break;
+                        
+                    case "6":
                         Logout();
                         break;
                         
