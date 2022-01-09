@@ -28,7 +28,7 @@ public class Menu
                 }
             }
             
-            System.out.print("Please specify a function: ");
+            System.out.println("Please specify a function: ");
             System.out.println("Enter 1 to see your account details");
             System.out.println("Enter 2 for getting Printing All Accounts");
             System.out.println("Enter 3 for getting Printing All Books");
@@ -46,10 +46,12 @@ public class Menu
                     break;
                    
                 case "2":
+                   System.out.println("--- Accounts ---");
                    File_Utilities.PrintArrayList(Account.Accounts);
                    break;
                     
                 case "3":
+                   System.out.println("--- Books ---");
                    File_Utilities.PrintArrayList(Book.Books);
                    break;  
                    
@@ -91,7 +93,7 @@ public class Menu
                 }
             }
             
-            System.out.print("Please specify a function: ");
+            System.out.println("Please specify a function: ");
             System.out.println("Enter 1 to see your account details");
             System.out.println("Enter 2 for getting Printing All Accounts");
             System.out.println("Enter 3 for getting Printing All Books");
@@ -109,12 +111,14 @@ public class Menu
                     break;
                    
                 case "2":
+                   System.out.println("--- Accounts ---");
                    File_Utilities.PrintArrayList(Account.Accounts);
                    break;
                     
                 case "3":
+                   System.out.println("--- Books ---");
                    File_Utilities.PrintArrayList(Book.Books);
-                   break;  
+                   break;
                    
                 case "4":
                    Logout();
@@ -160,6 +164,7 @@ public class Menu
         
         if(username.equals(EOF))
         {
+            System.out.println("Program Ended by User input");
             System.exit(0);
         }
         
@@ -168,6 +173,7 @@ public class Menu
         
         if(password.equals(EOF))
         {
+            System.out.println("Program Ended by User input");
             System.exit(0);
         }
         
@@ -181,12 +187,12 @@ public class Menu
         {
             if(Logged_Account.type == true) // Admin //
             {
-                System.out.println("Entered Admin type account");
+                System.out.println("Entered "+File_Utilities.ANSI_BLUE+" Admin "+File_Utilities.ANSI_RESET+" type account ");
                 Admin_Panel();
             }
             else // Student //
             {
-                System.out.println("Entered Student type account");
+                System.out.println("Entered "+File_Utilities.ANSI_BLUE+" Student "+File_Utilities.ANSI_RESET+" type account  ");
                 Student_Panel();
             }
         }
