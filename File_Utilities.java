@@ -36,16 +36,18 @@ public class File_Utilities
                         
                             if(catcher.length != 4)
                             {
-                                System.out.println("Unexpected Attributes");
-                                return;
+                                System.out.println("Unexpected Attributes in line "+counter+"");
                             }
-                            
+                            else
+                            {
                             String Name = catcher[0];
                             String Year = catcher[1];
                             String Genre = catcher[2];
                             String Writer_Name = catcher[3];
                             
                             Book book_temp = new Book(Name,Year,Genre,Writer_Name);
+                            }
+                            
                         } 
                         counter++;
                     }
@@ -89,7 +91,7 @@ public class File_Utilities
                         
                         if(catcher.length != 3)
                         {
-                        System.out.println("Unexpected Attributes");
+                        System.out.println("Unexpected Attributes in line "+counter+"");
                         return;
                         }
                         

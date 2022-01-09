@@ -9,7 +9,7 @@ public class Account
     protected static int ID_Counter = 0; // static counter to simulate auto increment //
     protected boolean type; // Account type (Student or Admin)
     
-    public static ArrayList<Account> Accounts = new ArrayList<>();
+    public static ArrayList<Account> Accounts = new ArrayList<>(); // Array List instance to hold all accounts //
     
     @SuppressWarnings("LeakingThisInConstructor")
     public Account()
@@ -57,6 +57,44 @@ public class Account
         else
         {
             this.ID = id;
+        }   
+    }
+    
+    public static void DeleteAccount(Account act)
+    {
+        for(int i=0;i<Accounts.size();i++)
+        {
+          if(act.ID == Accounts.get(i).ID && act.Username.equals(Accounts.get(i).Username) && act.type == Accounts.get(i).type)
+            {
+                    System.out.println("Remove Log: "+act.toString()+" -> "+Accounts.get(i).toString()+"");
+                    Accounts.remove(i);
+            }  
+        }
+    }
+    
+    public static void LookForDuplicates()
+    {
+        Account temp_account = null;
+        
+        for(int i=0;i<Accounts.size();i++)
+        {
+            for(int j=0;j<Accounts.size();j++)
+            {
+                if(temp_account == null)
+                {
+                    temp_account = Accounts.get(j);
+                }
+                else
+                {
+                    if(temp_account.ID == Accounts.get(j).ID && temp_account.Username.equals(Accounts.get(j).Username) && temp_account.type == Accounts.get(j).type)
+                    {
+                        System.out.println("Remove Log: "+temp_account.toString()+" -> "+Accounts.get(j).toString()+"");
+                        Accounts.remove(j);
+                    }
+                    temp_account = Accounts.get(j);
+                }   
+            }
+            temp_account = null;
         }   
     }
     

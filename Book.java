@@ -23,8 +23,7 @@ public class Book
         this.Genre = genre;
         this.Writer = writer_name;
         //this.PrintID();
-        Books.add(this);
-        
+        Books.add(this);   
     }
     
     public int getID()
@@ -41,6 +40,44 @@ public class Book
         else
         {
             this.ID = id;
+        }   
+    }
+    
+    public static void DeleteBook(Book book)
+    {
+        for(int i=0;i<Books.size();i++)
+        {
+            if(book.name.equals(Books.get(i).name) && book.year.equals(Books.get(i).year) && book.Writer.equals(Books.get(i).Writer) && book.Genre.equals(Books.get(i).Genre))
+            {
+                System.out.println("Remove Log: "+book.toString()+" -> "+Books.get(i).toString()+"");
+                Books.remove(i);
+            }
+        }
+    }
+    
+    public static void LookForDuplicates()
+    {
+        Book book_temp = null;
+        
+        for(int i=0;i<Books.size();i++)
+        {
+            for(int j=0;j<Books.size();j++)
+            {
+                if(book_temp == null)
+                {
+                    book_temp = Books.get(j);
+                }
+                else
+                {
+                    if(book_temp.name.equals(Books.get(i).name) && book_temp.year.equals(Books.get(i).year) && book_temp.Writer.equals(Books.get(i).Writer) && book_temp.Genre.equals(Books.get(i).Genre))
+                    {
+                        System.out.println("Remove Log: "+book_temp.toString()+" -> "+Books.get(i).toString()+"");
+                        Books.remove(i);
+                    }
+                    book_temp = Books.get(j);
+                }   
+            }
+            book_temp = null;
         }   
     }
     
