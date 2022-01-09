@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Account
 {
@@ -30,6 +31,20 @@ public class Account
         this.password = pass;  
         //PrintID();
         Accounts.add(this);
+    }
+    
+    public static void AddAccount()
+    {
+        int reply = JOptionPane.showConfirmDialog(null, "Is this Account is going to be an Admin Account ? ", "Account Setup", JOptionPane.YES_NO_OPTION);
+        
+        if (reply == JOptionPane.YES_OPTION) 
+        {
+            Admin.Setup_Admin();
+        } 
+        else 
+        {
+            Student.Setup_Student();
+        }
     }
     
     // Getter and Setter for Account Password //
@@ -118,16 +133,16 @@ public class Account
     @Override
     public String toString()
     {
-        System.out.println("ID: "+this.getID()+"");
-        System.out.println("Password: "+this.getPassword()+"");
+        System.out.println("ID: "+File_Utilities.ANSI_BLUE+""+this.getID()+""+File_Utilities.ANSI_RESET+"");
+        System.out.println("Password: "+File_Utilities.ANSI_BLUE+""+this.getPassword()+""+File_Utilities.ANSI_RESET+"");
         
         if(type == false)
         {
-            System.out.println("Account Type: Student");
+            System.out.println("Account Type: "+File_Utilities.ANSI_BLUE+"Student"+File_Utilities.ANSI_RESET+"");
         }
         else
         {
-            System.out.println("Account Type: Admin");
+            System.out.println("Account Type: "+File_Utilities.ANSI_BLUE+"Admin"+File_Utilities.ANSI_RESET+"");
         }
         return "\n";
     }

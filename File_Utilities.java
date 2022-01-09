@@ -1,6 +1,10 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -51,6 +55,7 @@ public class File_Utilities
                         } 
                         counter++;
                     }
+                    reader.close();
                 }
         catch(Exception e)
         {
@@ -80,7 +85,7 @@ public class File_Utilities
         String[] catcher = null;
         //System.out.println("Name Of The File: "+ANSI_BLUE+""+file.getName()+""+ANSI_RESET+"\n");
         
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
+            try(BufferedReader reader = new BufferedReader(new FileReader(file))) 
                 {
                     while ((line = reader.readLine()) != null)
                     {
@@ -110,6 +115,7 @@ public class File_Utilities
                         } 
                         counter++;
                     }
+                    reader.close();
                 }
             catch(Exception e)
             {
@@ -119,12 +125,46 @@ public class File_Utilities
     
     public static void WriteAccount()
     {
-        
+        //Account.LookForDuplicates();
     }
     
-    public static void WriteBook()
+    public static void WriteBook() throws FileNotFoundException, IOException
     {
+        //Book.LookForDuplicates();
         
+        File inputFile = new File(Books_Path);
+        File tempFile = new File(Desktop + "/Book.temp");
+
+        int counter = 0;
+        String line;
+        
+            try(BufferedReader reader = new BufferedReader(new FileReader(inputFile)); BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));) 
+                {
+                    while ((line = reader.readLine()) != null)
+                    {
+                        if(counter != 0)
+                        {
+                            writer.write(line + System.getProperty("line.separator"));   
+                        }
+                        counter++;
+                    }
+                    reader.close();
+                    writer.close();
+                }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        boolean status = tempFile.renameTo(inputFile);
+        
+        if(status == true)
+        {
+            System.out.println("Success");
+        }
+        else
+        {
+            System.out.println("Failure");
+        }
     }
     
     public static void PrintArray(Object[] array)

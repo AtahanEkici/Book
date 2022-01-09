@@ -1,4 +1,7 @@
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Menu 
 {
@@ -13,60 +16,83 @@ public class Menu
         
         while(true)
         {
-            if(Logged_Account == null)
-            {
-                System.out.println("\n Please Enter 1 for Login Enter Anything else to exit");
-                Scanner scanned = new Scanner(System.in);
-                
-                if("1".equals(scanned.next().trim()))
+            try {
+                if(Logged_Account == null)
                 {
-                    Login();
-                }
-                else
-                {
-                    System.exit(0);
-                }
-            }
-            
-            System.out.println("Please specify a function: ");
-            System.out.println("Enter 1 to see your account details");
-            System.out.println("Enter 2 for getting Printing All Accounts");
-            System.out.println("Enter 3 for getting Printing All Books");
-            System.out.println("Enter 4 for Logging Out");
-            System.out.print("Your choice: ");
-            
-            scanner = new Scanner(System.in);
-            input = scanner.next();
-            
-            switch(input.trim())
-            {
-                case "1": 
-                    System.out.print("\n--- Account Details ---");
-                    System.out.println(Logged_Account.toString());
-                    break;
-                   
-                case "2":
-                   System.out.println("--- Accounts ---");
-                   File_Utilities.PrintArrayList(Account.Accounts);
-                   break;
+                    System.out.println("\n Please Enter 1 for Login Enter Anything else to exit");
+                    Scanner scanned = new Scanner(System.in);
                     
-                case "3":
-                   System.out.println("--- Books ---");
-                   File_Utilities.PrintArrayList(Book.Books);
-                   break;  
-                   
-                case "4":
-                   Logout();
-                   break;
+                    if("1".equals(scanned.next().trim()))
+                    {
+                        Login();
+                    }
+                    else
+                    {
+                        System.exit(0);
+                    }
+                }
 
-                case EOF:
-                    System.out.println("User Ended the Program");
-                    System.exit(0);
-                    break;   
-                    
-                default:
-                    System.out.println("Command not recognized"); 
-                    break;
+                System.out.println("Please specify a function: ");
+                System.out.println("Enter 1 to see your account details");
+                System.out.println("Enter 2 for getting Printing All Accounts");
+                System.out.println("Enter 3 for getting Printing All Books");
+                System.out.println("Enter 4 for getting Adding a Book");
+                System.out.println("Enter 5 for getting Adding an Account");
+                System.out.println("Enter 6 for Logging Out");
+                System.out.println("Enter 7 for Writing Books to the File");
+                System.out.println("Enter 8 for Writing Account to the File");
+                System.out.print("Your choice: ");
+                
+                scanner = new Scanner(System.in);
+                input = scanner.next();
+                
+                switch(input.trim())
+                {
+                    case "1":
+                        System.out.print("\n--- Account Details ---");
+                        System.out.println(Logged_Account.toString());
+                        break;
+                        
+                    case "2":
+                        System.out.println("--- Accounts ---");
+                        File_Utilities.PrintArrayList(Account.Accounts);
+                        break;
+                        
+                    case "3":
+                        System.out.println("--- Books ---");
+                        File_Utilities.PrintArrayList(Book.Books);
+                        break;
+                    case "4":
+                        
+                        break;
+                        
+                    case "5":
+                        Account.AddAccount();
+                        break;    
+                        
+                    case "6":
+                        Logout();
+                        break;
+                        
+                    case "7":
+                        File_Utilities.WriteBook();
+                        break;
+                    case "8":
+                        File_Utilities.WriteAccount();
+                        break;
+                        
+                    case EOF:
+                        System.out.println("User Ended the Program");
+                        System.exit(0);
+                        break;
+                        
+                    default:
+                        System.out.println("Command not recognized");
+                        break;
+                }
+            } catch (Exception ex)
+            {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -78,60 +104,66 @@ public class Menu
         
         while(true)
         {
-            if(Logged_Account == null)
-            {
-                System.out.println("Enter 1 for Login Enter Anything else to exit");
-                scanner = new Scanner(System.in);
+            try {
+                if(Logged_Account == null)
+                {
+                    System.out.println("Enter 1 for Login Enter Anything else to exit");
+                    scanner = new Scanner(System.in);
+                    
+                    if("1".equals(scanner.next().trim()))
+                    {
+                        Login();
+                    }
+                    else
+                    {
+                        System.exit(0);
+                    }
+                }
                 
-                if("1".equals(scanner.next().trim()))
+                System.out.println("Please specify a function: ");
+                System.out.println("Enter 1 to see your account details");
+                System.out.println("Enter 2 for getting Printing All Accounts");
+                System.out.println("Enter 3 for getting Printing All Books");
+                System.out.println("Enter 4 for Logging Out");
+                
+                System.out.println("Entering 'end'(without the ' character) will exit the program");
+                
+                scanner = new Scanner(System.in);
+                input = scanner.next();
+                
+                switch(input.trim())
                 {
-                    Login();
+                    case "1":
+                        System.out.print("\n--- Account Details ---");
+                        System.out.println(Logged_Account.toString());
+                        break;
+                        
+                    case "2":
+                        System.out.println("--- Accounts ---");
+                        File_Utilities.PrintArrayList(Account.Accounts);
+                        break;
+                        
+                    case "3":
+                        System.out.println("--- Books ---");
+                        File_Utilities.PrintArrayList(Book.Books);
+                        break;
+                        
+                    case "4":
+                        Logout();
+                        break;
+                        
+                    case EOF:
+                        System.out.println("User Ended the Program");
+                        System.exit(0);
+                        break;
+                        
+                    default:
+                        System.out.println("Command not recognized");
+                        break;
                 }
-                else
-                {
-                    System.exit(0);
-                }
-            }
-            
-            System.out.println("Please specify a function: ");
-            System.out.println("Enter 1 to see your account details");
-            System.out.println("Enter 2 for getting Printing All Accounts");
-            System.out.println("Enter 3 for getting Printing All Books");
-            System.out.println("Enter 4 for Logging Out");
-            System.out.println("Entering 'end'(without the ' character) will exit the program");
-            
-            scanner = new Scanner(System.in);
-            input = scanner.next();
-            
-            switch(input.trim())
+            } catch (Exception ex) 
             {
-                case "1": 
-                   System.out.print("\n--- Account Details ---");
-                    System.out.println(Logged_Account.toString());
-                    break;
-                   
-                case "2":
-                   System.out.println("--- Accounts ---");
-                   File_Utilities.PrintArrayList(Account.Accounts);
-                   break;
-                    
-                case "3":
-                   System.out.println("--- Books ---");
-                   File_Utilities.PrintArrayList(Book.Books);
-                   break;
-                   
-                case "4":
-                   Logout();
-                   break;
-
-                case EOF:
-                    System.out.println("User Ended the Program");
-                    System.exit(0);
-                    break;   
-                    
-                default:
-                    System.out.println("Command not recognized"); 
-                    break;
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

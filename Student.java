@@ -13,7 +13,7 @@ public class Student extends Account
         super.type = false;
     }
     
-    public static Student Add_Student()
+    public static Student Setup_Student()
     {   
         String User_name = null;
         String Password = null;
